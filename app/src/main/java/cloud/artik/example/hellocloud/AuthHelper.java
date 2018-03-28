@@ -23,7 +23,7 @@ import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
 
 class AuthHelper {
-    private static final String ARTIKCLOUD_AUTHORIZE_URI = "https://accounts.artik.cloud/signin";
+    private static final String ARTIKCLOUD_AUTHORIZE_URI = "https://accounts.artik.cloud/authorize";
     private static final String ARTIKCLOUD_TOKEN_URI = "https://accounts.artik.cloud/token";
 
     static final String INTENT_ARTIKCLOUD_AUTHORIZATION_RESPONSE
@@ -45,6 +45,8 @@ class AuthHelper {
                 ResponseTypeValues.CODE,
                 Uri.parse(Config.REDIRECT_URI)
         );
+
+        AuthorizationRequest authRequest = builder.setPrompt("login").build();
 
         return builder.build();
 
